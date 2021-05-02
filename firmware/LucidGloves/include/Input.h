@@ -1,6 +1,7 @@
 #ifndef INPUT_H
 #define INPUT_H
 
+#include "Definitions.h"
 #include <Arduino.h>
 
 class Input
@@ -14,10 +15,10 @@ public:
     ~Input() = default;
 
     void setupInputs();
-    int* getFingerPositions(bool calibrating);
+    const int_array5& getFingerPositions(bool calibrating);
     int getJoyX();
     int getJoyY();
-    bool getButton(byte pin);
+    bool getButton(uint8_t pin);
 };
 
 #endif // INPUT_H

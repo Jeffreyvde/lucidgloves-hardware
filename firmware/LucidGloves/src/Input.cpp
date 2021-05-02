@@ -20,9 +20,8 @@ void Input::setupInputs()
 #endif
 }
 
-int* Input::getFingerPositions(bool calibrating)
+const int_array5& Input::getFingerPositions(bool calibrating)
 {
-
     int rawFingers[5] = {analogRead(PIN_PINKY), analogRead(PIN_RING), analogRead(PIN_MIDDLE), analogRead(PIN_INDEX), NO_THUMB ? 0 : analogRead(PIN_THUMB)};
 
 //flip pot values if needed
@@ -83,7 +82,7 @@ int Input::getJoyY()
 #endif
 }
 
-bool Input::getButton(byte pin)
+bool Input::getButton(uint8_t pin)
 {
     return digitalRead(pin) == HIGH;
 }
