@@ -1,5 +1,5 @@
 #include "Input.h"
-#include "lucidgloves-firmware.h"
+#include "Config.h"
 
 void Input::SetupInputs()
 {

@@ -1,9 +1,9 @@
+#include "Config.h"
 #include "Encoder.h"
 #include "Gesture.h"
 #include "ICommunication.h"
 #include "Input.h"
 #include "SerialCommunication.h"
-#include "lucidgloves-firmware.h"
 #include <Arduino.h>
 
 #define ALWAYS_CALIBRATING CALIBRATION_LOOPS == -1
@@ -14,9 +14,9 @@ Input input;
 int loops = 0;
 void setup()
 {
-#if COMMUNICATION == COMM_SERIAL
+#if defined(COMM_SERIAL)
     comm = new SerialCommunication();
-#elif COMMUNICATION == COMM_BTSERIAL
+#elif defined(COMM_BTSERIAL)
     comm = new BTSerialCommunication();
 #endif
     comm->Start();

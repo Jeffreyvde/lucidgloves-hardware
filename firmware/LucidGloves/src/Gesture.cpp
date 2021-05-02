@@ -1,5 +1,5 @@
 #include "Gesture.h"
-#include "lucidgloves-firmware.h"
+#include "Config.h"
 
 bool Gesture::GrabGesture(const int_array5& flexion)
 {

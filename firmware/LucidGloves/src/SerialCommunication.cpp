@@ -6,18 +6,18 @@ SerialCommunication::SerialCommunication()
     m_isOpen = false;
 }
 
-bool SerialCommunication::isOpen()
+bool SerialCommunication::IsOpen()
 {
     return m_isOpen;
 }
 
-void SerialCommunication::start()
+void SerialCommunication::Start()
 {
     Serial.begin(95);
     m_isOpen = true;
 }
 
-void SerialCommunication::output(char* data)
+void SerialCommunication::Output(char* data)
 {
     Serial.print(data);
     Serial.flush();
