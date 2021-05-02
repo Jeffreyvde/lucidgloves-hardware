@@ -12,11 +12,11 @@ public:
     SerialCommunication();
     ~SerialCommunication() override = default;
 
-    bool isOpen() override;
+    bool IsOpen() override;
 
-    void start() override;
+    void Start() override;
 
-    void output(char* data) override;
+    void Output(char* data) override;
 };
 
 #endif

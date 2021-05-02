@@ -14,11 +14,11 @@ public:
     Input() = default;
     ~Input() = default;
 
-    void setupInputs();
-    const int_array5& getFingerPositions(bool calibrating);
-    int getJoyX();
-    int getJoyY();
-    bool getButton(uint8_t pin);
+    void SetupInputs();
+    const int_array5& GetFingerPositions(bool calibrating);
+    int GetJoyX();
+    int GetJoyY();
+    bool GetButton(uint8_t pin);
 };
 
 #endif // INPUT_H

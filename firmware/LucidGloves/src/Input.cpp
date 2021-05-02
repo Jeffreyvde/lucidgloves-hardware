@@ -1,7 +1,7 @@
 #include "Input.h"
 #include "lucidgloves-firmware.h"
 
-void Input::setupInputs()
+void Input::SetupInputs()
 {
     pinMode(PIN_JOY_BTN, INPUT_PULLUP);
     pinMode(PIN_A_BTN, INPUT_PULLUP);
@@ -20,7 +20,7 @@ void Input::setupInputs()
 #endif
 }
 
-const int_array5& Input::getFingerPositions(bool calibrating)
+const int_array5& Input::GetFingerPositions(bool calibrating)
 {
     int rawFingers[5] = {analogRead(PIN_PINKY), analogRead(PIN_RING), analogRead(PIN_MIDDLE), analogRead(PIN_INDEX), NO_THUMB ? 0 : analogRead(PIN_THUMB)};
 
@@ -60,7 +60,7 @@ const int_array5& Input::getFingerPositions(bool calibrating)
     return calibrated;
 }
 
-int Input::getJoyX()
+int Input::GetJoyX()
 {
 #if JOYSTICK_BLANK
     return ANALOG_MAX / 2;
@@ -71,7 +71,7 @@ int Input::getJoyX()
 #endif
 }
 
-int Input::getJoyY()
+int Input::GetJoyY()
 {
 #if JOYSTICK_BLANK
     return ANALOG_MAX / 2;
@@ -82,7 +82,7 @@ int Input::getJoyY()
 #endif
 }
 
-bool Input::getButton(uint8_t pin)
+bool Input::GetButton(uint8_t pin)
 {
     return digitalRead(pin) == HIGH;
 }

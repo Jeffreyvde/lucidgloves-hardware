@@ -6,11 +6,11 @@ class ICommunication
 public:
     virtual ~ICommunication() = default;
 
-    virtual bool isOpen() = 0;
+    virtual bool IsOpen() = 0;
 
-    virtual void start() = 0;
+    virtual void Start() = 0;
 
-    virtual void output(char* data) = 0;
+    virtual void Output(char* data) = 0;
 };
 
 #endif

@@ -19,14 +19,14 @@ void setup()
 #elif COMMUNICATION == COMM_BTSERIAL
     comm = new BTSerialCommunication();
 #endif
-    comm->start();
+    comm->Start();
 
-    input.setupInputs();
+    input.SetupInputs();
 }
 
 void loop()
 {
-    if (comm->isOpen())
+    if (comm->IsOpen())
     {
 
         bool calibrate = false;
@@ -36,31 +36,31 @@ void loop()
             loops++;
         }
 
-        const int_array5& fingerPos = input.getFingerPositions(calibrate);
-        bool joyButton = input.getButton(PIN_JOY_BTN);
+        const int_array5& fingerPos = input.GetFingerPositions(calibrate);
+        bool joyButton = input.GetButton(PIN_JOY_BTN);
 
 #if TRIGGER_GESTURE
-        bool triggerButton = Gesture::triggerGesture(fingerPos);
+        bool triggerButton = Gesture::TriggerGesture(fingerPos);
 #else
-        bool triggerButton = getButton(PIN_TRIG_BTN);
+        bool triggerButton = input.GetButton(PIN_TRIG_BTN);
 #endif
 
-        bool aButton = input.getButton(PIN_A_BTN);
-        bool bButton = input.getButton(PIN_B_BTN);
+        bool aButton = input.GetButton(PIN_A_BTN);
+        bool bButton = input.GetButton(PIN_B_BTN);
 
 #if GRAB_GESTURE
-        bool grabButton = Gesture::grabGesture(fingerPos);
+        bool grabButton = Gesture::GrabGesture(fingerPos);
 #else
-        bool grabButton = Gesture::getButton(PIN_GRAB_BTN);
+        bool grabButton = Gesture::GetButton(PIN_GRAB_BTN);
 #endif
 
 #if PINCH_GESTURE
-        bool pinchButton = Gesture::grabGesture(fingerPos);
+        bool pinchButton = Gesture::GrabGesture(fingerPos);
 #else
-        bool pinchButton = input.getButton(PIN_PNCH_BTN);
+        bool pinchButton = input.GetButton(PIN_PNCH_BTN);
 #endif
 
-        comm->output(Encoder::Encode(fingerPos, input.getJoyX(), input.getJoyY(), joyButton, triggerButton, aButton, bButton, grabButton, pinchButton));
+        comm->Output(Encoder::Encode(fingerPos, input.GetJoyX(), input.GetJoyY(), joyButton, triggerButton, aButton, bButton, grabButton, pinchButton));
         delay(LOOP_TIME);
     }
 }
