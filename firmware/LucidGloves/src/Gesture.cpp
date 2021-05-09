@@ -1,5 +1,5 @@
 #include "Gesture.h"
-#include "Config.h"
+#include "Config/Config.h"
 
 bool Gesture::GrabGesture(const int_array5& flexion)
 {

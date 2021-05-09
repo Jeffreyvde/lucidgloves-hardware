@@ -1,4 +1,5 @@
-#include "SerialBTCommunication.h"
+#include "Communication/SerialBTCommunication.h"
+#include "Config/Config.h"
 #include <Arduino.h>
 
 SerialBTCommunication::SerialBTCommunication()
@@ -13,12 +14,10 @@ bool SerialBTCommunication::IsOpen()
 
 void SerialBTCommunication::Start()
 {
-    Serial.begin(95);
+    Serial.begin(SERIAL_BAUD_RATE);
     m_isOpen = true;
 }
 
 void SerialBTCommunication::Output(char* data)
 {
-    Serial.print(data);
-    Serial.flush();
 }

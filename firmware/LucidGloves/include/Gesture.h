@@ -1,7 +1,7 @@
 #ifndef GESTURE_H
 #define GESTURE_H
 
-#include "Definitions.h"
+#include "Config/Definitions.h"
 
 class Gesture
 {

@@ -1,17 +1,18 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-#include "Definitions.h"
+#include "Config/Config.h"
+#include "Config/Definitions.h"
 #include <Arduino.h>
 
 class Input
 {
 private:
-    int rightFingers[5];
-    int leftFingers[5];
+    int maxFingers[5] = {0, 0, 0, 0, 0};
+    int minFingers[5] = {ANALOG_MAX, ANALOG_MAX, ANALOG_MAX, ANALOG_MAX, ANALOG_MAX};
 
 public:
-    Input() = default;
+    Input();
     ~Input() = default;
 
     void SetupInputs();

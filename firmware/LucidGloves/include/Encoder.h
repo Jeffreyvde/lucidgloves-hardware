@@ -1,7 +1,7 @@
 #ifndef Encoder_H
 #define Encoder_H
 
-#include "Definitions.h"
+#include "Config/Definitions.h"
 #include <Arduino.h>
 
 class Encoder

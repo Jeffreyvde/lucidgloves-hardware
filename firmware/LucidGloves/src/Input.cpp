@@ -1,5 +1,9 @@
 #include "Input.h"
-#include "Config.h"
+#include "Config/Config.h"
+
+Input::Input()
+{
+}
 
 void Input::SetupInputs()
 {
@@ -37,10 +41,10 @@ const int_array5& Input::GetFingerPositions(bool calibrating)
     {
         for (int i = 0; i < 5; i++)
         {
-            if (rawFingers[i] > rightFingers[i])
-                rightFingers[i] = rawFingers[i];
-            if (rawFingers[i] < leftFingers[i])
-                leftFingers[i] = rawFingers[i];
+            if (rawFingers[i] > maxFingers[i])
+                maxFingers[i] = rawFingers[i];
+            if (rawFingers[i] < minFingers[i])
+                minFingers[i] = rawFingers[i];
         }
     }
 
@@ -48,9 +52,9 @@ const int_array5& Input::GetFingerPositions(bool calibrating)
 
     for (int i = 0; i < 5; i++)
     {
-        if (leftFingers[i] != rightFingers[i])
+        if (minFingers[i] != maxFingers[i])
         {
-            calibrated[i] = (int)((float)(rawFingers[i] - leftFingers[i]) / (float)(rightFingers[i] - leftFingers[i]) * ANALOG_MAX);
+            calibrated[i] = (int)((float)(rawFingers[i] - minFingers[i]) / (float)(maxFingers[i] - minFingers[i]) * ANALOG_MAX);
         }
         else
         {
@@ -65,9 +69,9 @@ int Input::GetJoyX()
 #if JOYSTICK_BLANK
     return ANALOG_MAX / 2;
 #elif JOY_FLIP_X
-    int rawValue = ANALOG_MAX - analogRead(PIN_JOY_X);
+    return ANALOG_MAX - analogRead(PIN_JOY_X);
 #else
-    int rawValue = analogRead(PIN_JOY_X);
+    return analogRead(PIN_JOY_X);
 #endif
 }
 

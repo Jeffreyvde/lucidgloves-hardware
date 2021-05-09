@@ -1,12 +1,14 @@
 //Interface for communication
 
-class ICommunication {
+class ICommunication
+{
 
-  public:
+public:
+    virtual ~ICommunication() = default;
+
     virtual bool isOpen() = 0;
 
     virtual void start() = 0;
 
     virtual void output(char* data) = 0;
-    
 };
